@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app # Mounts the backend code for hot-reloading (if uvicorn --reload is used)
+    env_file:
+      - ./backend/.env # Load environment variables from .env file
+    depends_on:
+      db:
+        condition: service_healthy # Waits for DB to be healthy
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80" # Nginx in frontend Dockerfile serves on port 80
+    volumes:
+      - ./frontend/src:/app/src # For local development, if you want hot-reloading for src changes
+                               # Note: This might need adjustments based on Vite's HMR and Docker setup.
+                               # For production build, this volume mount is not needed.
+    depends_on:
+      - backend
+    networks:
+      - app-network
+    # Environment variables for frontend can be set here if needed during build or runtime
+    # environment:
+    #   - VITE_API_BASE_URL=http://localhost:8000/api
+
+  db:
+    image: postgres:15-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    ports:
+      - "5432:5432"
+    env_file:
+      - ./backend/.env # DB connection details are in backend's .env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:
+    driver: bridge 
