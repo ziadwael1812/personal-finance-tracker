@@ -1,0 +1,21 @@
+Android Fitness Tracker App (Kotlin interop + Java)
+
+Core features:
+
+Track steps (Google Fit API) and workouts
+
+Local storage (Room database) + remote sync (Firebase)
+
+Charts for activity trends (MPAndroidChart)
+
+Notifications and reminders
+
+Advanced touches:
+
+Wear OS companion
+
+Dark mode support
+
+Custom sensor integration (heart-rate monitor)
+
+Why it impresses: mobile UI/UX, API integration, offline/online sync

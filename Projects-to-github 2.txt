@@ -1,0 +1,25 @@
+Microservice Architecture with Spring Cloud & Docker
+
+Core services:
+
+User Service (CRUD + auth)
+
+Product Service (catalog management)
+
+Order Service (checkout logic + messaging)
+
+Infrastructure:
+
+Spring Cloud Netflix (Eureka for discovery, Zuul/Gateway)
+
+Circuit breaker with Resilience4j
+
+Messaging with RabbitMQ or Kafka
+
+Observability:
+
+Centralized logging (ELK stack)
+
+Metrics with Micrometer + Prometheus + Grafana
+
+Why it impresses: real-world distributed systems, scalability, resilience

@@ -1,0 +1,27 @@
+Full-Stack E-Commerce Platform (Spring Boot + React/Vue)
+
+Back end (Java/Spring Boot)
+
+RESTful APIs for products, users, orders, carts
+
+Security with Spring Security (JWT authentication)
+
+Data persistence (Hibernate/JPA + MySQL or PostgreSQL)
+
+Unit/integration tests with JUnit and Mockito
+
+Front end (React or Vue)
+
+Product catalog, shopping cart, checkout flows
+
+Responsive design (Bootstrap or Tailwind CSS)
+
+Deployment & DevOps
+
+Dockerize both services
+
+CI/CD pipeline (GitHub Actions)
+
+Host on Heroku/AWS Elastic Beanstalk
+
+Why it impresses: full-stack fluency, security, testing, CI/CD
